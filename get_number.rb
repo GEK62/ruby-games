@@ -21,10 +21,15 @@ num_guesses = 0
 # Признак продолжения игры.
 guessed_it = false
 
+# Начало цикла проверки количества попыток
+until num_guesses == 10 || guessed_it
+
 # Сохранение случайного числа.
 puts "You've got #{10 - num_guesses} guesses left."
 print "Make a guess: "
 guess = gets.to_i
+
+num_guesses += 1
 
 # Сравнение введенного числа с загаданным
 # и вывод соответсвующего сообщения
@@ -36,4 +41,12 @@ elsif guess == target
     puts "Good job, #{name}!"
     puts "You guessed my number #{num_guesses} guesses!"
     guessed_it = true
+end
+
+# Конец цикла подсчета количества попыток
+end
+
+# Если попыток не осталось, сообщить загаданное число.
+unless guessed_it
+    puts "Sorry. You didn't get my number. (It was #{target}.)"
 end
